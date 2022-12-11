@@ -3,7 +3,7 @@ import '../../css/UserList.css'
 
 const UserList = (props) => {
 
-    const displayUsers = props.users.map((user) => <li>{user.username+' ('+user.age+' years old)'}</li>);
+    const displayUsers = props.users.map((user) => <li key={Math.random()}>{user.username+' ('+user.age+' years old)'}</li>);
 
     return (
         <Card class='users'>
