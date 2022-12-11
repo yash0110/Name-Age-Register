@@ -5,7 +5,7 @@ import '../../css/Button.css'
 
 const AddUser = (props) =>{
     const [username, setUsername] = useState('');
-    const [age, setAge] = useState();
+    const [age, setAge] = useState('');
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
