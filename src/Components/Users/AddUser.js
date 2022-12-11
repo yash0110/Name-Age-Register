@@ -3,13 +3,28 @@ import Card from '../UI/Card'
 import '../../css/AddUser.css'
 import '../../css/Button.css'
 
+const emptyInputError = 'Please enter a valid name and age (non-empty values).';
+const invalidAgeError = 'Please enter a valid age (>0)';
+
 const AddUser = (props) =>{
+
     const [username, setUsername] = useState('');
     const [age, setAge] = useState('');
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        props.AddUser({username: username,
+
+        if(!username || !age){
+            props.onInvalidInput(emptyInputError);
+            return;
+        }
+        if (isNaN(+age) || +age<1){
+            console.log(age);
+            props.onInvalidInput(invalidAgeError);
+            return;
+        }
+
+        props.onAddUser({username: username,
                         age: age});
         setUsername('');
         setAge('');
